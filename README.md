@@ -13,9 +13,7 @@
 | **Icons** | Tela-circle-purple |
 | **Cursor** | Bibata-Modern-Ice (24px) |
 | **Font** | Noto Sans CJK SC |
-| **CPU** | Intel Core i3-10105 @ 4.40GHz |
-| **GPU** | NVIDIA GeForce GTX 1650 |
-| **Memory** | 15.51 GiB |
+
 
 ## 📁 Contents
 - `hypr/` — Hyprland, hyprlock, hypridle, shaders, workflows
