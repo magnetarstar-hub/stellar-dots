@@ -1,140 +1,150 @@
-/* Import pywal-generated colors — regenerated on every wallpaper change */
-@import "/home/sam/.cache/wal/colors-waybar.css";
+/* ─────────────────────────────────────────────────────────────
+   Waybar style — Nordic "clean cyberpunk" pill bar
+   ───────────────────────────────────────────────────────────── */
+
+@define-color base       alpha(#2E3440, 0.8);
+@define-color mantle     alpha(#242833, 0.87);
+@define-color surface    #3B4252;
+@define-color surface2   #434C5E;
+@define-color text       #E5E9F0;
+@define-color subtext    #B7BFD2;
+@define-color teal       #8FBCBB;
+@define-color frost      #88C0D0;
+@define-color blue       #81A1C1;
+@define-color red        #BF616A;
+@define-color green      #A3BE8C;
+@define-color yellow     #EBCB8B;
+@define-color purple     #B48EAD;
 
 * {
-  font-family: "JetBrainsMono Nerd Font", monospace;
-  font-size: 12px;
-  border: none;
-  border-radius: 0;
-  min-height: 0;
-  transition: all 0.2s ease;
+    font-family: "Rubik", "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    min-height: 0;
 }
 
 window#waybar {
-  background: transparent;
-  color: @foreground;
+    background: transparent;
 }
 
-.modules-left,
-.modules-center,
-.modules-right {
-  background: alpha(@background, 0.88);
-  border-radius: 12px;
-  border: 1px solid alpha(@color4, 0.25);
-  margin: 5px 6px;
-  padding: 0 6px;
+#custom-launcher,
+#clock,
+#custom-notif-toggle,
+#workspaces,
+#custom-media,
+#battery,
+#pulseaudio,
+#network,
+#custom-power {
+    background: @base;
+    border: 1px solid alpha(@surface2, 0.6);
+    border-radius: 999px;
+    padding: 0 12px;
+    margin: 4px 3px;
+    color: @text;
 }
 
-/* ── Workspaces ─────────────────── */
+/* left cluster */
+#custom-launcher {
+    color: @frost;
+    font-size: 17px;
+    padding: 0 14px;
+    margin-right: 6px;
+}
+
+#clock {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: @text;
+}
+
+#custom-notif-toggle {
+    color: @purple;
+    padding: 0 12px;
+}
+
+/* center: workspace pills */
 #workspaces {
-  padding: 0 2px;
+    padding: 3px 6px;
+    background: @mantle;
 }
 
 #workspaces button {
-  padding: 2px 8px;
-  margin: 3px 1px;
-  color: alpha(@color4, 0.4);
-  background: transparent;
-  border-radius: 8px;
-  font-size: 13px;
-  transition: all 0.2s ease;
-}
-
-#workspaces button.active {
-  color: @foreground;
-  background: alpha(@color4, 0.3);
-  border-radius: 8px;
-  box-shadow: 0 0 10px alpha(@color4, 0.4);
+    all: unset;
+    color: @subtext;
+    background: transparent;
+    border-radius: 999px;
+    min-width: 26px;
+    padding: 4px 9px;
+    margin: 0 2px;
+    transition: all 160ms ease-in-out;
 }
 
 #workspaces button:hover {
-  color: @color5;
-  background: alpha(@color4, 0.15);
+    background: alpha(@surface2, 0.7);
+    color: @text;
+}
+
+/* active workspace = filled pill, teal -> purple gradient accent */
+#workspaces button.active {
+    background: linear-gradient(135deg, @frost, @purple);
+    color: #2E3440;
+    min-width: 34px;
+    font-weight: 700;
 }
 
 #workspaces button.urgent {
-  color: @color1;
-  background: alpha(@color1, 0.15);
+    background: @red;
+    color: @text;
 }
 
-/* ── Window Title ───────────────── */
-#window {
-  color: alpha(@color5, 0.55);
-  padding: 0 10px;
-  font-style: italic;
-  font-size: 11px;
+#custom-media {
+    margin-left: 6px;
+    color: @green;
 }
 
-/* ── Clock ──────────────────────── */
-#clock {
-  color: @foreground;
-  padding: 3px 14px;
-  font-weight: bold;
-  font-size: 13px;
-  letter-spacing: 1.5px;
-  text-shadow: 0 0 12px alpha(@color4, 0.6);
+/* right cluster: single grouped pill look via tight spacing */
+#battery {
+    color: @green;
 }
+#battery.warning { color: @yellow; }
+#battery.critical { color: @red; }
 
-/* ── Shared modules ─────────────── */
-#cpu, #memory, #custom-gpu,
-#custom-powerprofile, #pulseaudio,
-#network, #battery {
-  padding: 2px 10px;
-  margin: 3px 1px;
-  color: alpha(@foreground, 0.75);
-  border-radius: 7px;
+#pulseaudio {
+    color: @blue;
 }
-
-#cpu:hover, #memory:hover, #custom-gpu:hover,
-#pulseaudio:hover,
-#network:hover {
-  color: @foreground;
-  background: alpha(@color4, 0.12);
-}
-
-/* ── States ─────────────────────── */
-#cpu.warning, #memory.warning   { color: alpha(@color3, 0.85); }
-#cpu.critical, #memory.critical { color: alpha(@color1, 0.9);  }
-
-#custom-gpu {
-  color: @color4;
-  text-shadow: 0 0 8px alpha(@color4, 0.4);
-}
-
-/* ── Wallpaper button ───────────── */
-#custom-wallpaper {
-  color: alpha(@color5, 0.75);
-  padding: 2px 12px;
-  font-size: 15px;
-  border-radius: 7px;
-  margin: 3px 3px;
-  transition: all 0.2s ease;
-}
-
-#custom-wallpaper:hover {
-  color: @foreground;
-  background: alpha(@color4, 0.22);
-  box-shadow: 0 0 10px alpha(@color4, 0.3);
-}
-
-/* ── Audio ──────────────────────── */
 #pulseaudio.muted {
-  color: alpha(@color4, 0.25);
+    color: @subtext;
 }
 
-/* ── Network ────────────────────── */
-#network.disconnected { color: alpha(@color1, 0.85); }
-
-@keyframes pulse-critical {
-  0%   { box-shadow: none; }
-  50%  { box-shadow: 0 0 10px alpha(@color1, 0.5); }
-  100% { box-shadow: none; }
+#network {
+    color: @teal;
+}
+#network.disconnected {
+    color: @red;
 }
 
-/* ── Tray ───────────────────────── */
-#tray {
-  padding: 0 6px;
+#custom-power {
+    color: @red;
+    margin-right: 2px;
+    font-size: 14px;
 }
 
-#tray > .passive        { -gtk-icon-effect: dim; }
-#tray > .needs-attention { -gtk-icon-effect: highlight; }
+/* hover feedback across right-side pills */
+#battery:hover,
+#pulseaudio:hover,
+#network:hover,
+#custom-power:hover {
+    background: @surface;
+}
+
+tooltip {
+    background: @mantle;
+    border: 1px solid @surface2;
+    border-radius: 12px;
+    padding: 6px;
+}
+
+tooltip label {
+    color: @text;
+}
