@@ -1,0 +1,174 @@
+@import "/home/sam/.cache/walltheme/rofi.rasi"
+
+// ─── Nordic Pill — Rofi Theme ───────────────────────────────────
+// Matches: Hyprland Nordic/Cyberpunk rice
+// Colors: Nord-inspired dark + teal/purple accents
+// ────────────────────────────────────────────────────────────────
+
+* {
+    // ─── Assignments ────────────────────────────────────────────
+    background-color:   transparent;
+    text-color:         @fg0;
+    border-color:       @teal;
+    separatorcolor:     @bg3;
+}
+
+// ─── Window ─────────────────────────────────────────────────────
+window {
+    background-color:   @bg0;
+    border:             2px solid;
+    border-color:       @teal;
+    border-radius:      16px;
+    padding:            0px;
+    width:              520px;
+    location:           center;
+    anchor:             center;
+    transparency:       "real";
+    x-offset:           0;
+    y-offset:           0;
+}
+
+// ─── Main Box ───────────────────────────────────────────────────
+mainbox {
+    background-color:   transparent;
+    children:           [ inputbar, message, listview ];
+    spacing:            0px;
+    padding:            12px;
+}
+
+// ─── Input Bar ──────────────────────────────────────────────────
+inputbar {
+    background-color:   @bg1;
+    border-radius:      12px;
+    padding:            10px 14px;
+    margin:             0px 0px 10px 0px;
+    children:           [ prompt, entry ];
+    spacing:            8px;
+}
+
+prompt {
+    background-color:   transparent;
+    text-color:         @teal;
+    font:               "JetBrainsMono Nerd Font Bold 12";
+    vertical-align:     0.5;
+}
+
+entry {
+    background-color:   transparent;
+    text-color:         @fg0;
+    placeholder:        "Search...";
+    placeholder-color:  @fg-dim;
+    cursor-color:       @teal;
+    vertical-align:     0.5;
+}
+
+// ─── List View ──────────────────────────────────────────────────
+listview {
+    background-color:   transparent;
+    columns:            1;
+    lines:              8;
+    scrollbar:          false;
+    spacing:            4px;
+    padding:            0px;
+    cycle:              true;
+    dynamic:            true;
+    layout:             vertical;
+}
+
+// ─── Elements ───────────────────────────────────────────────────
+element {
+    background-color:   transparent;
+    border-radius:      10px;
+    padding:            8px 12px;
+    spacing:            10px;
+    orientation:        horizontal;
+    children:           [ element-icon, element-text ];
+    cursor:             pointer;
+}
+
+element normal.normal {
+    background-color:   transparent;
+    text-color:         @fg1;
+}
+
+element normal.urgent {
+    background-color:   @red;
+    text-color:         @fg0;
+}
+
+element normal.active {
+    background-color:   @teal-dim;
+    text-color:         @teal;
+}
+
+element selected.normal {
+    background-color:   @bg2;
+    text-color:         @fg0;
+    border:             1px solid;
+    border-color:       @teal;
+}
+
+element selected.urgent {
+    background-color:   @red;
+    text-color:         @fg0;
+}
+
+element selected.active {
+    background-color:   @teal-dim;
+    text-color:         @teal;
+}
+
+element alternate.normal {
+    background-color:   transparent;
+    text-color:         @fg1;
+}
+
+element-icon {
+    background-color:   transparent;
+    size:               24px;
+    vertical-align:     0.5;
+}
+
+element-text {
+    background-color:   transparent;
+    text-color:         inherit;
+    vertical-align:     0.5;
+    highlight:         bold #88C0D0;
+}
+
+// ─── Message ────────────────────────────────────────────────────
+message {
+    background-color:   @bg1;
+    border-radius:      10px;
+    padding:            8px 12px;
+    margin:             0px 0px 8px 0px;
+}
+
+textbox {
+    background-color:   transparent;
+    text-color:         @fg2;
+}
+
+// ─── Mode Switcher ──────────────────────────────────────────────
+mode-switcher {
+    background-color:   @bg1;
+    border-radius:      10px;
+    padding:            6px;
+    margin:             8px 0px 0px 0px;
+    spacing:            4px;
+}
+
+button {
+    background-color:   transparent;
+    text-color:         @fg-dim;
+    border-radius:      8px;
+    padding:            4px 10px;
+    cursor:             pointer;
+}
+
+button selected {
+    background-color:   @bg3;
+    text-color:         @teal;
+    border:             1px solid;
+    border-color:       @teal;
+}

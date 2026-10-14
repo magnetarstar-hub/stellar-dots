@@ -1,0 +1,17 @@
+configuration {
+    modi:                   "drun,run,window";
+    show-icons:             true;
+    icon-theme:             "Tela-circle-purple";
+    display-drun:           " Apps";
+    display-run:            " Run";
+    display-window:         " Windows";
+    drun-display-format:    "{name}";
+    font:                   "JetBrainsMono Nerd Font 12";
+    timeout {
+        action:             "kb-cancel";
+        delay:              0;
+    }
+    kb-cancel:              "Escape,Super+r";
+}
+
+@theme "~/.cache/walltheme/rofi.rasi"

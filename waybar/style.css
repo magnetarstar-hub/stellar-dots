@@ -1,30 +1,15 @@
-/* ─────────────────────────────────────────────────────────────
-   Waybar style — Nordic "clean cyberpunk" pill bar
-   ───────────────────────────────────────────────────────────── */
-
-@define-color base       alpha(#2E3440, 0.8);
-@define-color mantle     alpha(#242833, 0.87);
-@define-color surface    #3B4252;
-@define-color surface2   #434C5E;
-@define-color text       #E5E9F0;
-@define-color subtext    #B7BFD2;
-@define-color teal       #8FBCBB;
-@define-color frost      #88C0D0;
-@define-color blue       #81A1C1;
-@define-color red        #BF616A;
-@define-color green      #A3BE8C;
-@define-color yellow     #EBCB8B;
-@define-color purple     #B48EAD;
+@import url("file:///home/sam/.cache/walltheme/waybar-colors.css");
 
 * {
-    font-family: "Rubik", "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
-    font-size: 13px;
-    font-weight: 600;
+    font-family: "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
     min-height: 0;
 }
 
 window#waybar {
     background: transparent;
+    color: @text;
 }
 
 #custom-launcher,
@@ -36,60 +21,62 @@ window#waybar {
 #pulseaudio,
 #network,
 #custom-power {
-    background: @base;
-    border: 1px solid alpha(@surface2, 0.6);
-    border-radius: 999px;
-    padding: 0 12px;
-    margin: 4px 3px;
+    background: alpha(@base, 0.92);
+    border: 1px solid alpha(@surface2, 0.72);
+    border-radius: 9px;
+    padding: 0 11px;
+    margin: 5px 3px;
     color: @text;
 }
 
-/* left cluster */
 #custom-launcher {
-    color: @frost;
-    font-size: 17px;
-    padding: 0 14px;
-    margin-right: 6px;
+    background: @frost;
+    color: @base;
+    font-size: 16px;
+    font-weight: 700;
+    min-width: 34px;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 5px;
 }
 
 #clock {
     font-weight: 700;
-    letter-spacing: 0.5px;
+    letter-spacing: 0;
     color: @text;
 }
 
 #custom-notif-toggle {
-    color: @purple;
-    padding: 0 12px;
+    color: @accent_alt;
+    padding: 0 10px;
 }
 
-/* center: workspace pills */
 #workspaces {
-    padding: 3px 6px;
-    background: @mantle;
+    padding: 2px 4px;
+    background: alpha(@mantle, 0.94);
+    border-color: alpha(@frost, 0.34);
 }
 
 #workspaces button {
     all: unset;
     color: @subtext;
     background: transparent;
-    border-radius: 999px;
-    min-width: 26px;
-    padding: 4px 9px;
-    margin: 0 2px;
-    transition: all 160ms ease-in-out;
+    border-radius: 6px;
+    min-width: 25px;
+    padding: 4px 8px;
+    margin: 0 1px;
+    transition: background-color 140ms ease, color 140ms ease;
 }
 
 #workspaces button:hover {
-    background: alpha(@surface2, 0.7);
+    background: alpha(@surface2, 0.85);
     color: @text;
 }
 
-/* active workspace = filled pill, teal -> purple gradient accent */
 #workspaces button.active {
-    background: linear-gradient(135deg, @frost, @purple);
-    color: #2E3440;
-    min-width: 34px;
+    background: @frost;
+    color: @base;
+    min-width: 30px;
     font-weight: 700;
 }
 
@@ -98,12 +85,6 @@ window#waybar {
     color: @text;
 }
 
-#custom-media {
-    margin-left: 6px;
-    color: @green;
-}
-
-/* right cluster: single grouped pill look via tight spacing */
 #battery {
     color: @green;
 }
@@ -113,6 +94,7 @@ window#waybar {
 #pulseaudio {
     color: @blue;
 }
+
 #pulseaudio.muted {
     color: @subtext;
 }
@@ -125,26 +107,32 @@ window#waybar {
 }
 
 #custom-power {
-    color: @red;
-    margin-right: 2px;
+    color: @accent_alt;
     font-size: 14px;
+    padding: 0 12px;
+    margin-right: 0;
 }
 
-/* hover feedback across right-side pills */
+#custom-launcher:hover,
+#clock:hover,
+#custom-notif-toggle:hover,
+#workspaces:hover,
 #battery:hover,
 #pulseaudio:hover,
 #network:hover,
 #custom-power:hover {
-    background: @surface;
+    border-color: alpha(@frost, 0.68);
+    background: alpha(@surface, 0.94);
 }
 
 tooltip {
-    background: @mantle;
-    border: 1px solid @surface2;
-    border-radius: 12px;
-    padding: 6px;
+    background: alpha(@mantle, 0.98);
+    border: 1px solid alpha(@frost, 0.5);
+    border-radius: 7px;
+    padding: 7px 9px;
 }
 
 tooltip label {
     color: @text;
+    font-size: 11px;
 }

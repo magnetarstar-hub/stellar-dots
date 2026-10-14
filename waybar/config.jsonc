@@ -1,6 +1,3 @@
-// ─────────────────────────────────────────────────────────────
-// Waybar config — floating pill bar, Nordic clean-cyberpunk
-// ─────────────────────────────────────────────────────────────
 {
     "layer": "top",
     "position": "top",
@@ -10,16 +7,14 @@
     "margin-right": 14,
     "spacing": 0,
 
-    // three grouped "pill" modules: left / center / right
     "modules-left": ["custom/launcher", "clock", "custom/notif-toggle"],
-    "modules-center": ["hyprland/workspaces", "custom/media"],
+    "modules-center": ["hyprland/workspaces"],
     "modules-right": ["battery", "pulseaudio", "network", "custom/power"],
 
-    // ── Left ──────────────────────────────────────────────────
     "custom/launcher": {
         "format": "󰣇",
         "tooltip": false,
-        "on-click": "rofi -show drun -theme ~/.config/rofi/nordic-pill.rasi"
+        "on-click": "rofi -show drun -theme ~/.cache/walltheme/rofi.rasi"
     },
 
     "clock": {
@@ -42,31 +37,17 @@
         "escape": true
     },
 
-    // ── Center ────────────────────────────────────────────────
-   "hyprland/workspaces": {
-    "format": "{icon}",
-    "on-click": "activate",
-    "format-icons": {
-        "1": "1", "2": "2", "3": "3", "4": "4", "5": "5",
-        "6": "6", "7": "7", "8": "8", "9": "9",
-        "urgent": "!",
-        "default": ""
-    }
-},
-
-    "custom/media": {
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 32,
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
         "format-icons": {
-            "Playing": "󰏤",
-            "Paused": "󰐊"
-        },
-        "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{title}}\", \"tooltip\": \"{{playerName}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
-        "on-click": "playerctl play-pause"
+            "1": "1", "2": "2", "3": "3", "4": "4", "5": "5",
+            "6": "6", "7": "7", "8": "8", "9": "9",
+            "urgent": "!",
+            "default": ""
+        }
     },
 
-    // ── Right (single grouped translucent pill) ────────────────
     "battery": {
         "states": { "warning": 25, "critical": 10 },
         "format": "{icon} {capacity}%",

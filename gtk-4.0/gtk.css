@@ -1,1 +1,44 @@
-/home/sam/.local/share/themes/Decay-Green/gtk-4.0/gtk.css
+@define-color theme_bg_color #170f1b;
+@define-color theme_fg_color #eef2f7;
+@define-color theme_base_color #251d29;
+@define-color theme_text_color #eef2f7;
+@define-color theme_selected_bg_color #db60a5;
+@define-color theme_selected_fg_color #eef2f7;
+@define-color accent_color #db60a5;
+@define-color accent_bg_color #db60a5;
+@define-color accent_fg_color #eef2f7;
+@define-color headerbar_bg_color #170f1b;
+@define-color headerbar_fg_color #eef2f7;
+@define-color card_bg_color #251d29;
+@define-color card_fg_color #eef2f7;
+
+window, dialog, popover, menu {
+    background-color: @theme_bg_color;
+    color: @theme_fg_color;
+}
+
+headerbar, .titlebar, .csd {
+    background-color: @headerbar_bg_color;
+    color: @headerbar_fg_color;
+}
+
+button, .card {
+    background-color: @card_bg_color;
+    color: @card_fg_color;
+    border-color: @accent_color;
+}
+
+entry, textview, view, list, treeview {
+    background-color: @theme_base_color;
+    color: @theme_text_color;
+    caret-color: @accent_color;
+}
+
+selection {
+    background-color: @theme_selected_bg_color;
+    color: @theme_selected_fg_color;
+}
+
+*:focus {
+    outline-color: @accent_color;
+}
