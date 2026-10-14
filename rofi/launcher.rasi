@@ -1,0 +1,96 @@
+/**
+ * ~/.config/rofi/launcher.rasi
+ * Dynamic theme — colors injected by pywal via colors-rofi.rasi
+ */
+
+@import "~/.cache/wal/colors-rofi.rasi"
+
+* {
+    font:                "JetBrainsMono Nerd Font 12";
+    background-color:   transparent;
+    text-color:         @fg;
+}
+
+window {
+    background-color:   @bg;
+    border:             1px solid;
+    border-color:       @border;
+    border-radius:      14px;
+    width:              520px;
+    padding:            0;
+}
+
+mainbox {
+    background-color:   transparent;
+    children:           [ inputbar, listview ];
+    spacing:            0;
+    padding:            12px;
+}
+
+/* ── Search bar ─────────────────── */
+inputbar {
+    background-color:   @bg-alt;
+    border-radius:      10px;
+    padding:            10px 14px;
+    margin:             0 0 10px 0;
+    spacing:            8px;
+    children:           [ prompt, entry ];
+}
+
+prompt {
+    background-color:   transparent;
+    text-color:         @accent;
+    padding:            0 4px 0 0;
+}
+
+entry {
+    background-color:   transparent;
+    text-color:         @fg;
+    placeholder:        "Search apps...";
+    placeholder-color:  @fg-alt;
+}
+
+/* ── App list ───────────────────── */
+listview {
+    background-color:   transparent;
+    columns:            1;
+    lines:              8;
+    spacing:            4px;
+    scrollbar:          false;
+    fixed-height:       true;
+}
+
+element {
+    background-color:   transparent;
+    border-radius:      8px;
+    padding:            8px 10px;
+    spacing:            10px;
+    orientation:        horizontal;
+    children:           [ element-icon, element-text ];
+}
+
+element selected {
+    background-color:   @accent;
+    text-color:         @bg;
+}
+
+element-icon {
+    background-color:   transparent;
+    size:               22px;
+}
+
+element-text {
+    background-color:   transparent;
+    text-color:         inherit;
+    vertical-align:     0.5;
+}
+
+/* ── Scrollbar ──────────────────── */
+scrollbar {
+    background-color:   @bg-alt;
+    handle-color:       @accent;
+    handle-width:       4px;
+    border-radius:      2px;
+    width:              4px;
+    margin:             0 0 0 4px;
+}

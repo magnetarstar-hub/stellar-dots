@@ -1,0 +1,100 @@
+// ─────────────────────────────────────────────────────────────
+// Waybar config — floating pill bar, Nordic clean-cyberpunk
+// ─────────────────────────────────────────────────────────────
+{
+    "layer": "top",
+    "position": "top",
+    "height": 38,
+    "margin-top": 10,
+    "margin-left": 14,
+    "margin-right": 14,
+    "spacing": 0,
+
+    // three grouped "pill" modules: left / center / right
+    "modules-left": ["custom/launcher", "clock", "custom/notif-toggle"],
+    "modules-center": ["hyprland/workspaces", "custom/media"],
+    "modules-right": ["battery", "pulseaudio", "network", "custom/power"],
+
+    // ── Left ──────────────────────────────────────────────────
+    "custom/launcher": {
+        "format": "󰣇",
+        "tooltip": false,
+        "on-click": "rofi -show drun -theme ~/.config/rofi/nordic-pill.rasi"
+    },
+
+    "clock": {
+        "format": "{:%H:%M}",
+        "tooltip-format": "{:%A, %d %B %Y}",
+        "interval": 10
+    },
+
+    "custom/notif-toggle": {
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "󰂚",
+            "none": "󰂜",
+            "dnd-notification": "󰂛",
+            "dnd-none": "󰂛"
+        },
+        "return-type": "json",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "escape": true
+    },
+
+    // ── Center ────────────────────────────────────────────────
+   "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "format-icons": {
+        "1": "1", "2": "2", "3": "3", "4": "4", "5": "5",
+        "6": "6", "7": "7", "8": "8", "9": "9",
+        "urgent": "!",
+        "default": ""
+    }
+},
+
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 32,
+        "format-icons": {
+            "Playing": "󰏤",
+            "Paused": "󰐊"
+        },
+        "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{title}}\", \"tooltip\": \"{{playerName}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+        "on-click": "playerctl play-pause"
+    },
+
+    // ── Right (single grouped translucent pill) ────────────────
+    "battery": {
+        "states": { "warning": 25, "critical": 10 },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰂂", "󰁹"]
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pavucontrol",
+        "scroll-step": 5
+    },
+
+    "network": {
+        "format-wifi": "󰤨",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰤭",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "on-click": "nm-connection-editor"
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": false,
+        "on-click": "wlogout"
+    }
+}
