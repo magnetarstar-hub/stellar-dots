@@ -2,9 +2,16 @@
 
 Linux desktop dotfiles for Hyprland, Waybar, Kitty, Fish, Neovim, GTK, Rofi, btop, and Fastfetch.
 
+## Clone
+
+```bash
+git clone https://github.com/magnetarstar-hub/stellar-dots.git
+cd stellar-dots
+```
+
 ## Install
 
-Clone the repository, then run these commands from its root directory:
+Run these commands from the repository root:
 
 ```bash
 mkdir -p "$HOME/.config" "$HOME/Pictures/wallpapers"
